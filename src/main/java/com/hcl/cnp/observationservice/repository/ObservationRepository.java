@@ -1,6 +1,7 @@
 package com.hcl.cnp.observationservice.repository;
 
 import com.hcl.cnp.observationservice.domain.Observation;
+import com.hcl.cnp.observationservice.domain.Patient;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,11 +32,23 @@ public class ObservationRepository {
     }
 
     public List<Observation> findAll() {
+        fillData();
         return observations;
     }
 
     public List<Observation> findByPatient(String patientId) {
-        return observations.stream().filter(obs -> obs.getPatient().equals(patientId)).collect(Collectors.toList());
+        fillData();
+        List<Observation> list = observations.stream().filter(obs -> obs.getPatient().getId().equals(patientId)).collect(Collectors.toList());
+
+        return list;
+    }
+
+    private void fillData() {
+        if(observations.size() == 0) {
+            add(new Observation(null, "Everything is ok", new Patient("3", "Jose", "Boucourt")));
+            add(new Observation(null, "Any observation", new Patient("1", "Ben", "Winston")));
+            add(new Observation(null, "Working well", new Patient("2", "Anil", "Grupta")));
+        }
     }
 
 }

@@ -19,9 +19,10 @@ public class ObservationServiceApplication {
 	@Bean
 	ObservationRepository repository() {
 		ObservationRepository repository = new ObservationRepository();
-		repository.add(new Observation(null, "Any observation", new Patient("1", "Jose", "Boucourt")));
-		repository.add(new Observation(null, "Any observation", new Patient("2", "Ben", "Winston")));
-		repository.add(new Observation(null, "Any observation", new Patient("3", "Anil", "Grupta")));
+		repository.add(new Observation(null, "Everything is ok", new Patient("3", "Jose", "Boucourt")));
+		repository.add(new Observation(null, "Any observation", new Patient("1", "Ben", "Winston")));
+		repository.add(new Observation(null, "Working", new Patient("2", "Anil", "Grupta")));
+
 		return repository;
 	}
 }

@@ -1,5 +1,6 @@
 package com.hcl.cnp.observationservice.rest;
 
+import com.hcl.cnp.observationservice.domain.ObsEntity;
 import com.hcl.cnp.observationservice.domain.Observation;
 import com.hcl.cnp.observationservice.repository.ObservationRepository;
 import com.hcl.cnp.observationservice.service.ObservationService;
@@ -19,19 +20,32 @@ public class ObservationResource {
     @Autowired
     ObservationService observationService;
 
-    @GetMapping(path = "/patient/{patientId}")
-    public List<Observation> findByPatient(@PathVariable("patientId") String patientId) {
-        return observationService.findByPatient(patientId);
-    }
-
     @GetMapping(path = "/find-all")
-    public List<Observation> findAll() {
+    public List<ObsEntity> findAll() {
         return observationService.findAll();
     }
 
-    @GetMapping(path = "/find-one/{id}")
-    public Observation findOne(@PathVariable("id") String id) {
-        return observationService.findById(id);
+    @GetMapping(path = "find-one/{id}")
+    public ObsEntity findOne(@PathVariable("id") Integer id) {
+        return observationService.findOne(id);
     }
+
+    //Mocks
+    @GetMapping(path = "/patient-mock/{patientId}")
+    public List<Observation> findByPatientMock(@PathVariable("patientId") String patientId) {
+        return observationService.findByPatientMock(patientId);
+    }
+
+    @GetMapping(path = "/find-all-mock")
+    public List<Observation> findAllMock() {
+        return observationService.findAllMock();
+    }
+
+    @GetMapping(path = "/find-one-mock/{id}")
+    public Observation findOneMock(@PathVariable("id") String id) {
+        return observationService.findByIdMock(id);
+    }
+
+
 
 }

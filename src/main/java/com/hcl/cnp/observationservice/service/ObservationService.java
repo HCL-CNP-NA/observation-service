@@ -1,5 +1,6 @@
 package com.hcl.cnp.observationservice.service;
 
+import com.hcl.cnp.observationservice.domain.ObsEntity;
 import com.hcl.cnp.observationservice.domain.Observation;
 
 import java.util.List;
@@ -9,9 +10,14 @@ import java.util.List;
  */
 public interface ObservationService {
 
-    List<Observation> findByPatient(String patientId);
+    List<ObsEntity> findAll();
 
-    List<Observation> findAll();
+    ObsEntity findOne(Integer id);
 
-    Observation findById(String id);
+    //Mocks
+    List<Observation> findByPatientMock(String patientId);
+
+    List<Observation> findAllMock();
+
+    Observation findByIdMock(String id);
 }

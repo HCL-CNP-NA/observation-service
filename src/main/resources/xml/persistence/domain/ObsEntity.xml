@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.hcl.cnp.observationservice.domain.ObsEntity">
+        <table name="obs" schema="openmrs" catalog=""/>
+        <attributes>
+            <id name="obsId">
+                <column name="obs_id"/>
+            </id>
+            <basic name="obsDatetime">
+                <column name="obs_datetime"/>
+            </basic>
+            <basic name="accessionNumber">
+                <column name="accession_number"/>
+            </basic>
+            <basic name="valueGroupId">
+                <column name="value_group_id"/>
+            </basic>
+            <basic name="valueDatetime">
+                <column name="value_datetime"/>
+            </basic>
+            <basic name="valueNumeric">
+                <column name="value_numeric"/>
+            </basic>
+            <basic name="valueModifier">
+                <column name="value_modifier"/>
+            </basic>
+            <basic name="valueText">
+                <column name="value_text"/>
+            </basic>
+            <basic name="valueComplex">
+                <column name="value_complex"/>
+            </basic>
+            <basic name="comments">
+                <column name="comments"/>
+            </basic>
+            <basic name="dateCreated">
+                <column name="date_created"/>
+            </basic>
+            <basic name="voided">
+                <column name="voided"/>
+            </basic>
+            <basic name="dateVoided">
+                <column name="date_voided"/>
+            </basic>
+            <basic name="voidReason">
+                <column name="void_reason"/>
+            </basic>
+            <basic name="uuid">
+                <column name="uuid"/>
+            </basic>
+            <basic name="formNamespaceAndPath">
+                <column name="form_namespace_and_path"/>
+            </basic>
+            <many-to-one name="obsByObsGroupId" optional="true"
+                         target-entity="com.hcl.cnp.observationservice.domain.ObsEntity">
+                <join-column name="obs_group_id" nullable="false" referenced-column-name="obs_id"/>
+            </many-to-one>
+            <many-to-one name="obsByPreviousVersion" optional="true"
+                         target-entity="com.hcl.cnp.observationservice.domain.ObsEntity">
+                <join-column name="previous_version" nullable="false" referenced-column-name="obs_id"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>
